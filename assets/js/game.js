@@ -1,9 +1,9 @@
-export const emojis = ["🍎", "🍎", "🍌", "🍌", "🍒", "🍒", "🍇", "🍇"];
+const emojis = ["🍎", "🍎", "🍌", "🍌", "🍒", "🍒", "🍇", "🍇"];
 let shuffledEmojis = emojis.sort(() => Math.random() - 0.5);
 let board = document.querySelector(".game-board");
 let selectedCards = [];
 let matchedPairs = 0;
-console.log("game.js loaded");
+
 export function initializeGame() {
   shuffledEmojis.forEach((emoji, index) => {
     let card = document.createElement("div");
@@ -16,7 +16,7 @@ export function initializeGame() {
   });
 }
 
-export function flipCard() {
+function flipCard() {
   if (selectedCards.length < 2) {
     let card = this;
     card.textContent = card.dataset.emoji;
@@ -29,7 +29,7 @@ export function flipCard() {
   }
 }
 
-export function checkMatch() {
+function checkMatch() {
   let [card1, card2] = selectedCards;
   if (card1.dataset.emoji === card2.dataset.emoji) {
     matchedPairs++;
